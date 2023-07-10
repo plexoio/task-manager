@@ -1,0 +1,17 @@
+So that our Database knows the changes:
+1. python3
+2. from taskmanager import db
+3. db.create_all()
+4. exit()
+5. Confirm existance:
+- set_pg
+- psql -d taskmanager
+- /dt
+
+Repeat if changes, e.g.:
+- If "task_owner = db.Column(db.String(25), unique=True, nullable=False)"
+- Then repeat 1,2, 3 & 4 steps
+
+After:
+
+Postgres database should be populated with our tables and their respective columns and relationships.
