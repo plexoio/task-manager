@@ -6,7 +6,7 @@ pip3 install 'Flask-SQLAlchemy<3' psycopg2 sqlalchemy==1.4.46
 
 ![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
 
-Welcome USER_NAME,
+Welcome Frank Reinaldo Arellano Andrade,
 
 This is the Code Institute student template for Gitpod. We have preinstalled all of the tools you need to get started. It's perfectly ok to use this template as the basis for your project submissions.
 
