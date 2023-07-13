@@ -12,7 +12,7 @@
 
 <div class="row">
     {% for task in tasks|sort(attribute="due_date") %}
-
+    <!-- Collapsible -->
     <ul class="collapsible">
         <li>
             <div class="collapsible-header">
@@ -27,8 +27,34 @@
             <div class="collapsible-body">
                 <ul>
                     <li>Description: {{ task.text_description }}</li>
-                    <li>Category ID: {{ task.category_id }}</li>
+                    {% for category in categories %}
+                    {% if category == task.category %}
+                    <li>Category: {{ category.category_name}}</li>
+                    {% endif%}
+                    {% endfor%}
                 </ul>
+
+                <!-- Edit & Delete  Task -->
+                <div class="card-action center-align">
+                    <a href="{{ url_for('edit_task', task_id=task.id) }}" class="btn red accent-4">Edit</a>
+                    <a href="#modal-{{ task.id }}" class="btn  red lighten-1 modal-trigger">Delete</a>
+
+                    <!-- Modal Structure -->
+                    <div id="modal-{{ task.id }}" class="modal">
+                        <div class="modal-content">
+                            <h4>CAUTION!</h4>
+                            <p>
+                                You are about to delete this entry permanently! Are you sure you want to continue?
+                            </p>
+                        </div>
+                        <div class="modal-footer">
+                            <a href="#" class="btn red accent-4 modal-close">CANCEL</a>
+                            <a href="{{ url_for('delete_task', task_id=task.id) }}"
+                                class="btn red lighten-1 modal-close">DELETE</a>
+                        </div>
+                    </div>
+
+                </div>
             </div>
         </li>
     </ul>
