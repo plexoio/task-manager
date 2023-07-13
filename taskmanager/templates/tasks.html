@@ -10,4 +10,29 @@
     </div>
 </div>
 
+<div class="row">
+    {% for task in tasks|sort(attribute="due_date") %}
+
+    <ul class="collapsible">
+        <li>
+            <div class="collapsible-header">
+                <i class="fas fa-caret-down"></i>
+                <strong>{{ task.task_name }}</strong>:&nbsp;{{ task.due_date.strftime("%d, %B, %Y") }}
+                {% if task.is_urgent == True %}
+                &nbsp;<i class="fas fa-exclamation-circle red-text"></i>
+                {% else %}
+                &nbsp;<i class="fas fa-note-sticky red-text"></i>
+                {% endif%}
+            </div>
+            <div class="collapsible-body">
+                <ul>
+                    <li>Description: {{ task.text_description }}</li>
+                    <li>Category ID: {{ task.category_id }}</li>
+                </ul>
+            </div>
+        </li>
+    </ul>
+    {% endfor %}
+</div>
+</div>
 {% endblock %}
